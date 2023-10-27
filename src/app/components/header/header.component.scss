@@ -1,13 +1,42 @@
-.header{
+@import '../../../default/scss/variable';
+
+.header {
   width: 100%;
   margin: 0;
   padding: 0;
 }
 
-.nav{
-  &-logo{
+.nav {
+  background-color: $colorPrimary;
+  padding: .4em .6em;
+
+  &-logo {
     width: 50px;
     height: auto;
   }
-  
+
+  &-title {
+    font-size: 32px;
+    font-weight: 800;
+    font-family: Lato;
+    color: $colorSecondary;
+    margin: 0 .5em;
+  }
+
+  &-search {
+    padding: .5em;
+
+    div { 
+      label {
+        font-size: 12px;
+      }
+
+    }
+
+    &__input {
+      font-size: 12px;
+
+    }
+  }
+
 }
