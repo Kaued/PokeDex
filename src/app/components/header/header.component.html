@@ -1,0 +1,17 @@
+<header class="header">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../../assets/logo.png" alt="Logo" class="nav-logo">
+        PokeDex
+      </a>
+      <form [formGroup]="searchForm">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="Digite o nome do Pokemon"
+            formControlName="search">
+          <label for="floatingInput">Pesquisar Pokemon</label>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
