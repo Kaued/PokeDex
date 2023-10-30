@@ -1,0 +1,109 @@
+@import '../../../default/scss/variable.scss';
+
+.body {
+  background-color: #fffccd;
+  padding: 5em 0;
+  min-height: 600px;
+}
+
+.list {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+
+  &-pokebol {
+    display: flex;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: auto;
+    }
+
+    span {
+      font-size: 1.2em;
+      font-family: Lato;
+      font-weight: 800;
+      margin-left: 5px;
+    }
+  }
+
+  &-item {
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.50);
+    border: none;
+    border: 5px solid $colorPrimary;
+
+    &__body {
+      border-top: 5px solid $colorSecondary;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: radial-gradient(circle, rgb(255, 255, 255) 10%, rgb(214, 214, 214) 100%);
+    }
+
+    &__pokebol {
+      width: 50px;
+      height: auto;
+      position: absolute;
+      top: 256px;
+      left: calc(50% - 30px);
+    }
+
+    &__figure {
+      width: 100%;
+      padding: 2em;
+      background-image: url('../../../assets/background_pokedex.png');
+      object-fit: cover;
+      margin-bottom: 0;
+    }
+
+    &__title {
+      width: fit-content;
+      font-size: 2em;
+      font-family: Lato;
+      text-align: center;
+      margin: 1em auto;
+      margin-top: 0.7em;
+      font-weight: 600;
+      color: #000;
+    }
+
+    &__link {
+      background-color: $colorPrimary;
+      border: none;
+      font-size: 1em;
+      font-family: Lato;
+      font-weight: 600;
+    }
+  }
+}
+
+.pagination {
+  &-content {
+    margin-top: 5em;
+  }
+}
+
+.page {
+  &-item {
+
+    button{
+      background-color: $colorPrimary;
+      font-size: 1.2em;
+      padding: 10px;
+      color: white;
+      font-weight: 500;
+    }
+  }
+
+  .active{
+    background-color: white;
+    color: $colorPrimary;
+    border-color: 2px solid $colorPrimary;
+  }
+}

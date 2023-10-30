@@ -1,1 +1,49 @@
-<p>home works!</p>
+<section class="body">
+  <div *ngIf="!isLoading; else loading">
+    <div *ngIf="listPokemons.length>0 else notFound" class="list">
+      <div *ngFor="let pokemon of listPokemons">
+        <div class="card list-item me-lg-5 mb-5" style="width: 18rem;">
+          <div class="list-pokebol">
+            <img src="../../../assets/pokebola.png" class="" />
+            <span>#{{ pokemon.id }}</span>
+          </div>
+          <figure class="list-item__figure">
+            <img src="{{ pokemon.img }}" class="card-img-top list-item__img" alt="{{ pokemon.name }}">
+          </figure>
+          <div class="card-body   list-item__body">
+            <img src="../../../assets/pokebola.png" class="list-item__pokebol" />
+            <h5 class="card-title list-item__title">{{ pokemon.name.replaceAll("-", " ") | titlecase }}</h5>
+            <a href="#" class="btn btn-primary list-item__link">Saiba Mais</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #notFound>
+      <div>
+        Não foi encontrado nenhum pokemon
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #loading>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <nav aria-label="Páginas" class="pagination-content" *ngIf="listPokemons.length>0">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngIf="page>1">
+        <button class="page-link" routerLink="/{{ page-1 }}"  (click)="setPage(page-1)">Anterior</button>
+      </li>
+      <li class="page-item" *ngIf="page>1"><button class="page-link" routerLink="/{{ page-1 }}" (click)="setPage(page-1)">{{ page-1 }}</button></li>
+      <li class="page-item active"><button class="page-link" routerLink="/{{ page }}" (click)="setPage(page)">{{ page }}</button></li>
+      <li class="page-item" *ngIf="page<34"><button class="page-link" routerLink="/{{ page+1 }}" (click)="setPage(page+1)">{{ page+1 }}</button></li>
+      <li class="page-item" *ngIf="page<34">
+        <button class="page-link" routerLink="/{{ page+1 }}" (click)="setPage(page+1)" >Next</button>
+      </li>
+    </ul>
+  </nav>
+</section>

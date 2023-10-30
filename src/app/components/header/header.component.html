@@ -5,8 +5,8 @@
         <img src="../../../assets/logo.png" alt="Logo" class="nav-logo">
         <h1 class="nav-title">PokeDex</h1>
       </a>
-      <form [formGroup]="searchForm" class="nav-search">
-          <input type="text" class="form-control" formControlName="search" placeholder="Pequisar Pokemon">
+      <form class="nav-search">
+          <input type="text" class="form-control" placeholder="Pequisar Pokemon" (change)="makeSearch($event)">
       </form>
     </div>
   </nav>
