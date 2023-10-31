@@ -3,6 +3,7 @@ import { ResponseAll } from '../interface/response-all';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PokemonResponse } from '../interface/pokemon-response';
+import { SinglePokemon } from '../interface/single-pokemon';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,9 @@ export class PokemonService {
 
   getAll(limit: number = this.total): Observable<ResponseAll<PokemonResponse>> {
     return this.http.get<ResponseAll<PokemonResponse>>(`${this.baseUrl}/pokemon/?limit=${limit}`);
+  }
+
+  getPokemon(id: number): Observable<SinglePokemon> {
+    return this.http.get<SinglePokemon>(`${this.baseUrl}/pokemon/${id}`);
   }
 }

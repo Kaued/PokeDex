@@ -1,0 +1,30 @@
+@import '../../../default/scss/variable.scss';
+
+.body {
+  background-color: #fffccd;
+  padding: 5em 0;
+  min-height: 600px;
+}
+
+.pokemon{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  border: 5px solid $colorPrimary;
+  border-radius: 20px;
+
+  &-image{
+    height: auto;
+    background-image: url('../../../assets/background_pokedex.png');
+  }
+
+  &-body{
+    padding: 4em;
+    height: 100%;
+    width: 50%;
+    background: radial-gradient(circle, rgb(255, 255, 255) 10%, rgb(214, 214, 214) 100%);
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.50);
+  }
+}

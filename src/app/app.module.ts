@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon'
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    SinglePokemonComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,26 +3,26 @@
   <div *ngIf="!isLoading; else loading">
     <div *ngIf="listPokemons.length>0 else notFound" class="list">
       <div *ngFor="let pokemon of listPokemons">
-        <div class="card list-item me-lg-5 mb-5" style="width: 18rem;">
-          <div class="list-pokebol">
+        <article class="card list-item me-lg-5 mb-5" style="width: 18rem;">
+          <header class="list-pokebol">
             <img src="../../../assets/pokebola.png" class="" />
             <span>#{{ pokemon.id }}</span>
-          </div>
+          </header>
           <figure class="list-item__figure">
             <img src="{{ pokemon.img }}" class="card-img-top list-item__img" alt="{{ pokemon.name }}">
           </figure>
-          <div class="card-body list-item__body">
+          <article class="card-body list-item__body">
             <img src="../../../assets/pokebola.png" class="list-item__pokebol" />
             <h5 class="card-title list-item__title">{{ pokemon.name.replaceAll("-", " ") | titlecase }}</h5>
             <a href="#" class="btn btn-primary list-item__link">Saiba Mais</a>
-          </div>
-        </div>
+          </article>
+        </article>
       </div>
     </div>
     <ng-template #notFound>
-      <div>
+      <article>
         Não foi encontrado nenhum pokemon
-      </div>
+      </article>
     </ng-template>
   </div>
 

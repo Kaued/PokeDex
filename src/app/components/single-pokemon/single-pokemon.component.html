@@ -1,0 +1,41 @@
+<section class="body">
+  <div *ngIf="!isLoading; else loading">
+    <article *ngIf="pokemon" class="pokemon">
+      <figure class="pokemon-image">
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon.id }}.png"
+          class="card-img-top list-item__img" alt="{{ pokemon.name }}">
+      </figure>
+
+      <article class="pokemon-body">
+        <h1 class="pokemon-title">
+          {{ pokemon.name | titlecase}}
+        </h1>
+        <div class="pokemon-content">
+          <aside class="pokemon-content__information">
+            <p><strong>Id:</strong>#{{ pokemon.id }}</p>
+            <p><strong>Heigh:</strong>{{ pokemon.height/10 }}m</p>
+            <p><strong>Weight:</strong>{{ pokemon.weight/10 }}kg</p>
+            <p><strong>Types:</strong><span *ngFor="let type of pokemon.types"><span class="{{ type.type.name }}">{{ type.type.name | titlecase
+                  }}</span> </span></p>
+          </aside>
+          <aside class="pokemon-content__stats">
+            <div class="stats" *ngFor="let stat of pokemon.stats">
+              <span>{{ stat.stat.name | titlecase }}</span>
+              <div class="progress" role="progressbar" aria-label="progress" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100">
+                <div class="progress-bar" [style]="{'width': stat.base_stat+'%'}">{{ stat.base_stat }}</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </article>
+  </div>
+
+  <ng-template #loading>
+    <div>
+      Carregando
+    </div>
+  </ng-template>
+</section>
