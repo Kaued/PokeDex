@@ -1,5 +1,6 @@
 import { Component, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class HeaderComponent {
 
-  @Output() term?:string;
+  constructor (public search:SearchService){}
 
   makeSearch(event: Event){
-    this.term= (event.target as HTMLInputElement).value;
-    console.log(this.term);
+    const term= (event.target as HTMLInputElement).value;
+    this.search.term= term;
   }
 }

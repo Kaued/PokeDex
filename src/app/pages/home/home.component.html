@@ -1,4 +1,5 @@
 <section class="body">
+  <input type="hidden" value="{{ makeSearch() }}">
   <div *ngIf="!isLoading; else loading">
     <div *ngIf="listPokemons.length>0 else notFound" class="list">
       <div *ngFor="let pokemon of listPokemons">
@@ -10,7 +11,7 @@
           <figure class="list-item__figure">
             <img src="{{ pokemon.img }}" class="card-img-top list-item__img" alt="{{ pokemon.name }}">
           </figure>
-          <div class="card-body   list-item__body">
+          <div class="card-body list-item__body">
             <img src="../../../assets/pokebola.png" class="list-item__pokebol" />
             <h5 class="card-title list-item__title">{{ pokemon.name.replaceAll("-", " ") | titlecase }}</h5>
             <a href="#" class="btn btn-primary list-item__link">Saiba Mais</a>
@@ -33,15 +34,22 @@
     </div>
   </ng-template>
 
-  <nav aria-label="Páginas" class="pagination-content" *ngIf="listPokemons.length>0">
+  <nav aria-label="Páginas" class="pagination-content" *ngIf="listPokemons.length>0 && search.term==''">
     <ul class="pagination justify-content-center">
-      <li class="page-item" *ngIf="page>1">
+      <li class="page-item" *ngIf="pagination.hasPrevious">
         <button class="page-link" routerLink="/{{ page-1 }}"  (click)="setPage(page-1)">Anterior</button>
       </li>
-      <li class="page-item" *ngIf="page>1"><button class="page-link" routerLink="/{{ page-1 }}" (click)="setPage(page-1)">{{ page-1 }}</button></li>
-      <li class="page-item active"><button class="page-link" routerLink="/{{ page }}" (click)="setPage(page)">{{ page }}</button></li>
-      <li class="page-item" *ngIf="page<34"><button class="page-link" routerLink="/{{ page+1 }}" (click)="setPage(page+1)">{{ page+1 }}</button></li>
-      <li class="page-item" *ngIf="page<34">
+      <li class="page-item" *ngIf="pagination.actual>pagination.first+1"><button class="page-link"
+          routerLink="/{{ pagination.first }}" (click)="setPage(pagination.first)">{{ pagination.first }}</button>
+      </li>
+      <li class="page-item" *ngIf="pagination.actual>pagination.first+1"><button class="page-link">...</button>
+      </li>
+      <li class="page-item" *ngFor="let page of pagination.pages"><button class="page-link {{ pagination.actual==page ? 'active': '' }}" routerLink="/{{ page}}" (click)="setPage(page)">{{ page }}</button></li>
+      <li class="page-item" *ngIf="pagination.actual<pagination.last-1"><button class="page-link">...</button>
+      </li>
+      <li class="page-item" *ngIf="pagination.actual<pagination.last-1"><button class="page-link" routerLink="/{{ pagination.last }}" (click)="setPage(pagination.last)">{{ pagination.last }}</button>
+      </li>
+      <li class="page-item" *ngIf="pagination.hasNext">
         <button class="page-link" routerLink="/{{ page+1 }}" (click)="setPage(page+1)" >Next</button>
       </li>
     </ul>
