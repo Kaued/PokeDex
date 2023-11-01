@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { SinglePokemonComponent } from './components/single-pokemon/single-pokem
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   declarations: [
     AppComponent,

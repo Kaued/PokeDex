@@ -6,25 +6,139 @@
   min-height: 600px;
 }
 
-.pokemon{
+.pokemon {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1400px;
+  width: 100%;
   border: 5px solid $colorPrimary;
   border-radius: 20px;
 
-  &-image{
+  &-image {
     height: auto;
     background-image: url('../../../assets/background_pokedex.png');
+    border-radius: 15px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 80%;
+    }
   }
 
-  &-body{
+  &-body {
     padding: 4em;
-    height: 100%;
     width: 50%;
+    border-left: 5px solid $colorSecondary;
     background: radial-gradient(circle, rgb(255, 255, 255) 10%, rgb(214, 214, 214) 100%);
-    border-radius: 20px;
+    border-radius: 0px 15px 0px 0px;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.50);
+  }
+
+  &-title {
+    margin: 0 auto;
+    width: fit-content;
+    font-size: 36px;
+    font-family: Roboto;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    margin-bottom: 32px;
+
+    img {
+      height: 30px;
+      margin-right: 5px;
+    }
+  }
+
+  &-content {
+    &__information {
+      p {
+        font-size: 18px;
+        font-weight: 500;
+        font-family: Lato;
+        margin-bottom: 16px;
+
+        strong {
+          color: #000;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    &__stats {
+      margin-top: 40px;
+      border-radius: 20px;
+      background-color: #ffffff60;
+      padding: 10px 30px;
+      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.25);
+
+      .progress {
+        background-color: #ffc7c7;
+        height: 20px;
+        margin-bottom: 16px;
+
+        &-bar {
+          background-color: $colorPrimary;
+          font-size: 16px;
+        }
+
+      }
+
+      h1 {
+        width: fit-content;
+        margin: 16px auto;
+        font-size: 32px;
+        font-family: Lato;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+
+    &__icon {
+      font-weight: 500;
+      color: $colorPrimary;
+      margin-right: 10px;
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  margin-top: 20px;
+
+  span {
+    font-size: 16px;
+    color: #000;
+    font-family: Lato;
+  }
+}
+
+.evolution {
+  border-top: 5px solid $colorSecondary;
+  border-radius: 0px 0px 15px 15px;
+  background: radial-gradient(circle, rgb(255, 255, 255) 10%, rgb(214, 214, 214) 100%);
+
+  h1 {
+    margin: 20px auto;
+    width: fit-content;
+    font-size: 36px;
+    margin-bottom: 5px;
+    font-family: Roboto;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 32px;
+
+    &::after{
+      content: "";
+      margin-left:auto;
+      margin-right:auto;
+      margin-bottom: 15px;
+      height: 3px;
+      width: 50%;
+      background-color: $colorPrimary;
+    }
   }
 }
