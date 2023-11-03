@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoadingComponent } from './components/loading/loading.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     FooterComponent,
     HomeComponent,
     SinglePokemonComponent,
-    LoadingComponent
+    LoadingComponent,
+    NotFoundComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 <section class="body">
   <div *ngIf="!isLoading; else loading">
-    <article *ngIf="pokemon" class="pokemon row">
+    <article *ngIf="pokemon; else notFound" class="pokemon row">
       <figure class="pokemon-image col-lg-6 m-0">
         <img
           src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ pokemon.id }}.png"
@@ -57,5 +57,9 @@
 
   <ng-template #loading>
     <app-loading></app-loading>
+  </ng-template>
+
+  <ng-template #notFound>
+    <app-not-found></app-not-found>
   </ng-template>
 </section>
