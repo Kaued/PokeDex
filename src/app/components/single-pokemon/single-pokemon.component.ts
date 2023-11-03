@@ -4,6 +4,7 @@ import { SinglePokemon } from 'src/app/interface/single-pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { faArrowRight, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { PokemonEvolution } from 'src/app/interface/pokemon-evolution';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-single-pokemon',
@@ -21,7 +22,10 @@ export class SinglePokemonComponent {
   } = { list: [], totalStage: [1] };
 
   faChartLine = faChartLine;
-  faArrowRight = faArrowRight
+  faArrowRight = faArrowRight;
+
+  private pokemonRequest? : Subscription;
+  private evolutionRequest? : Subscription;
 
   constructor(private router: ActivatedRoute, private pokemonService: PokemonService) {
     this.id = Number(this.router.snapshot.paramMap.get('id'));
@@ -29,11 +33,11 @@ export class SinglePokemonComponent {
 
   ngOnInit() {
     this.isLoading = true;
-    this.pokemonService.getPokemon(this.id).subscribe({next:async (response) => {
+    this.pokemonRequest=this.pokemonService.getPokemon(this.id).subscribe({next:async (response) => {
 
         this.pokemon = response;
 
-      this.pokemonService.getEvolution(this.id).subscribe((response) => {
+      this.evolutionRequest=this.pokemonService.getEvolution(this.id).subscribe((response) => {
           this.listEnvolves(response);
           this.isLoading = false;
       });
@@ -41,6 +45,11 @@ export class SinglePokemonComponent {
       this.isLoading=false;
     }} )
 
+  }
+
+  ngOnDestroy(){
+    this.evolutionRequest?.unsubscribe();
+    this.pokemonRequest?.unsubscribe();
   }
 
   listEnvolves(evolution: PokemonEvolution, stage = 1) {

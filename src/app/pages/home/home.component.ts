@@ -4,6 +4,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 import { ActivatedRoute } from '@angular/router'
 import { Pagination } from 'src/app/interface/pagination';
 import { SearchService } from 'src/app/services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent {
   listPokemons: Pokemons[] = [];
   page!: number;
   pagination!: Pagination;
+  private request?: Subscription;
 
   constructor(private pokemonService: PokemonService, private router: ActivatedRoute, public search: SearchService) {
     this.page = Number(this.router.snapshot.paramMap.get("page")) ? Number(this.router.snapshot.paramMap.get("page")) : 1;
@@ -24,7 +26,10 @@ export class HomeComponent {
 
   ngOnInit() {
     this.listPokemon(this.page ? this.page : 1);
-    console.log(this.search.term);
+  }
+
+  ngOnDestroy(){
+    this.request?.unsubscribe();
   }
 
   setPage(newPage: number) {
@@ -42,7 +47,7 @@ export class HomeComponent {
 
     } else {
       this.isLoading = true;
-      this.pokemonService.getAll(1000).subscribe((response) => {
+      this.request=this.pokemonService.getAll(1000).subscribe((response) => {
         this.pokemons = response.results.map((pokemon) => {
           let id = Number(pokemon.url.split("/")[6]);
 
@@ -83,7 +88,6 @@ export class HomeComponent {
       pages: pages
     }
 
-    console.log(this.pagination);
   }
 
   makeSearch() {
