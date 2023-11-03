@@ -1,0 +1,12 @@
+.loading {
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 100px);
+  justify-content: center;
+  align-items: center;
+
+  .spinner-border{
+    width: 150px;
+    height: 150px;
+  }
+}

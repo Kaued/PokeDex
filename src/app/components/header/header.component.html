@@ -1,7 +1,7 @@
 <header class="header">
   <nav class="navbar nav">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" href="#">
+    <div *ngIf="!router.url.includes('pokemon'); else return" class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="../../../assets/logo.png" alt="Logo" class="nav-logo">
         <h1 class="nav-title">PokeDex</h1>
       </a>
@@ -9,5 +9,13 @@
           <input type="text" class="form-control" placeholder="Pequisar Pokemon" (keyup)="makeSearch($event)">
       </form>
     </div>
+    <ng-template #return>
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center return" routerLink="..">
+          <fa-icon [icon]="faArrowLeft"></fa-icon>
+          <span>Voltar</span>
+        </a>
+      </div>
+    </ng-template>
   </nav>
 </header>

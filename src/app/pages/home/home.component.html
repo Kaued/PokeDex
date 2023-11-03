@@ -14,7 +14,7 @@
           <article class="card-body list-item__body">
             <img src="../../../assets/pokebola.png" class="list-item__pokebol" />
             <h5 class="card-title list-item__title">{{ pokemon.name.replaceAll("-", " ") | titlecase }}</h5>
-            <a href="#" class="btn btn-primary list-item__link">Saiba Mais</a>
+            <a routerLink="pokemon/{{ pokemon.id }}" class="btn btn-primary list-item__link">Saiba Mais</a>
           </article>
         </article>
       </div>
@@ -27,11 +27,7 @@
   </div>
 
   <ng-template #loading>
-    <div class="d-flex justify-content-center">
-      <div class="spinner-border" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
-    </div>
+    <app-loading></app-loading>
   </ng-template>
 
   <nav aria-label="Páginas" class="pagination-content" *ngIf="listPokemons.length>0 && search.term==''">

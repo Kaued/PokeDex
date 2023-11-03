@@ -35,14 +35,18 @@
       </article>
       <article class="evolution col-12">
         <h1>Evolutions</h1>
-        <div class="d-flex col-12">
+        <div class="d-flex col-12 mb-4">
           <div *ngFor="let stage of evolutionList.totalStage" [ngStyle]="{'width': getWidhtStage()}"
             class="evolution-stage">
+            <div *ngIf="stage<evolutionList.totalStage[evolutionList.totalStage.length-1]"class="evolution-next">
+              <fa-icon [icon]="faArrowRight" class="evolution-next__icon"></fa-icon>
+              <span>Evolves To</span>
+            </div>
             <div *ngFor="let evolution of evolutionList.list" class="evolution-stage__list">
               <div *ngIf="evolution.stage==stage" class="evolution-stage__content">
                 <img
                   src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{ evolution.id }}.png">
-                <p>{{ evolution.name }}</p>
+                <p>{{ evolution.name | titlecase }}</p>
               </div>
             </div>
           </div>
@@ -52,8 +56,6 @@
   </div>
 
   <ng-template #loading>
-    <div>
-      Carregando
-    </div>
+    <app-loading></app-loading>
   </ng-template>
 </section>

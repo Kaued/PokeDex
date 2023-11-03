@@ -1,0 +1,34 @@
+@import '../../../default/scss/variable.scss';
+
+.footer {
+  width: 100%;
+  padding: 20px 20px 5px 20px;
+  background-color: $colorPrimary;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+      width: 150px;
+    }
+
+    h1{
+      font-size: 32px;
+      font-family: Lato;
+      font-weight: 700;
+      color: $colorSecondary;
+
+    }
+  }
+
+  &-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    margin-bottom: 0px;
+  }
+}

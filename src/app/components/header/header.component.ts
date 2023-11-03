@@ -1,5 +1,7 @@
 import { Component, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -10,10 +12,13 @@ import { SearchService } from 'src/app/services/search.service';
 
 export class HeaderComponent {
 
-  constructor (public search:SearchService){}
+  faArrowLeft = faArrowLeft;
+
+  constructor (public search:SearchService, public router: Router){}
 
   makeSearch(event: Event){
     const term= (event.target as HTMLInputElement).value;
     this.search.term= term;
   }
+
 }

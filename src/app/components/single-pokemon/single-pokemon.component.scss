@@ -1,10 +1,6 @@
 @import '../../../default/scss/variable.scss';
 
-.body {
-  background-color: #fffccd;
-  padding: 5em 0;
-  min-height: 600px;
-}
+
 
 .pokemon {
   display: flex;
@@ -121,6 +117,7 @@
   border-radius: 0px 0px 15px 15px;
   background: radial-gradient(circle, rgb(255, 255, 255) 10%, rgb(214, 214, 214) 100%);
 
+
   h1 {
     margin: 20px auto;
     width: fit-content;
@@ -131,14 +128,85 @@
     color: #000;
     margin-bottom: 32px;
 
-    &::after{
+    &::after {
       content: "";
-      margin-left:auto;
-      margin-right:auto;
+      margin-left: auto;
+      margin-right: auto;
       margin-bottom: 15px;
       height: 3px;
       width: 50%;
+      display: block;
+      margin-top: 5px;
       background-color: $colorPrimary;
+    }
+  }
+
+
+  &-next{
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+
+    &__icon{
+      font-size: 28px;
+      color: $colorPrimary;
+      text-align: center;
+    }
+
+    span{
+      font-size: 16px;
+      font-family: Lato;
+      color: #000;
+    }
+  }
+
+  &-stage {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &__list {
+      width: calc(100% - 10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 10px;
+
+      &:first-child {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+      }
+
+      &:nth-last-child(1) {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+
+    }
+
+    &__content {
+      background: radial-gradient(circle, rgba(255, 255, 255, 1) 1, rgba(180, 177, 177, 0) 100%);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      img {
+        max-width: 200px;
+      }
+
+      p {
+        margin: 10px auto;
+        width: fit-content;
+        font-size: 24px;
+        color: #000;
+        text-align: center;
+      }
     }
   }
 }

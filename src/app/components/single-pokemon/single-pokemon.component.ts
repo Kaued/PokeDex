@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SinglePokemon } from 'src/app/interface/single-pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import { PokemonEvolution } from 'src/app/interface/pokemon-evolution';
 
 @Component({
@@ -19,6 +19,7 @@ export class SinglePokemonComponent {
                   totalStage: number[]} = {list:[], totalStage:[1]};
 
   faChartLine = faChartLine;
+  faArrowRight = faArrowRight
 
   constructor(private router: ActivatedRoute, private pokemonService: PokemonService) {
     this.id = Number(this.router.snapshot.paramMap.get('id'));
@@ -28,11 +29,11 @@ export class SinglePokemonComponent {
     this.isLoading = true;
     this.pokemonService.getPokemon(this.id).subscribe(async (response) => {
       this.pokemon = response;
-      this.isLoading = false;
 
       this.pokemonService.getEvolution(this.id).subscribe((response) => {
         this.listEnvolves(response);
         console.log(this.evolutionList);
+        this.isLoading = false;
       });
     })
   }

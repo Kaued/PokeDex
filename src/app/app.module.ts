@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SinglePokemonComponent } from './components/single-pokemon/single-pokemon.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    SinglePokemonComponent
+    SinglePokemonComponent,
+    LoadingComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

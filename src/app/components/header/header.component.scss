@@ -41,3 +41,20 @@
 
 }
 
+.return {
+  padding: 10px;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  span {
+    margin-left: 5px;
+    font-weight: 700;
+  }
+
+  transition: 0.3s all ease-in-out;
+
+  &:hover{
+    scale: 1.1;
+    color: $colorSecondary;
+  }
+}
